@@ -1,0 +1,358 @@
+{
+  "info": {
+    "name": "MATCHY API - Postman Collection 🇹🇳",
+    "description": "Collection complète des routes de l'API Matchy pour tester les endpoints sur Postman.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Système - Health & Telemetry",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "2. Auth - Connexion (User / Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"karim.plombier@yahoo.fr\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "3. Auth - Inscription d'un nouveau membre",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Tarek Mansouri\",\n  \"email\": \"tarek.menuisier@matchy.tn\",\n  \"password\": \"secret123\",\n  \"role\": \"user\",\n  \"pack\": \"provider\",\n  \"phone\": \"+216 29 881 742\",\n  \"governorate\": \"Sfax\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "4. Auth - Mon Profil Connecté",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/auth/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "me"]
+        }
+      }
+    },
+    {
+      "name": "5. Auth - Mettre à jour mon profil",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"+216 98 999 888\",\n  \"governorate\": \"Sousse\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "profile"]
+        }
+      }
+    },
+    {
+      "name": "6. Packs - Liste des Packs (Seeker, Provider, Hybride)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/packs",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "packs"]
+        }
+      }
+    },
+    {
+      "name": "7. Packs - Basculer de Pack en 1 clic",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pack\": \"hybrid\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/packs/switch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "packs", "switch"]
+        }
+      }
+    },
+    {
+      "name": "8. Catégories - Métiers disponibles en Tunisie",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/categories",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "categories"]
+        }
+      }
+    },
+    {
+      "name": "9. Opportunités - Tout le flux (Demandes & Offres)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities"]
+        }
+      }
+    },
+    {
+      "name": "10. Opportunités - Besoins Clients Uniquement (type=demand)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities?type=demand&governorate=Sousse",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities"],
+          "query": [
+            { "key": "type", "value": "demand" },
+            { "key": "governorate", "value": "Sousse" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "11. Opportunités - Offres des Artisans Uniquement (type=offer)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities?type=offer",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities"],
+          "query": [{ "key": "type", "value": "offer" }]
+        }
+      }
+    },
+    {
+      "name": "12. Opportunités - Détails d'un besoin (ID: opp-1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities/opp-1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities", "opp-1"]
+        }
+      }
+    },
+    {
+      "name": "13. Publier - Type 1 : Besoin Client (Seeker)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"demand\",\n  \"title\": \"Réparation chauffe-eau électrique en panne\",\n  \"category\": \"electricite\",\n  \"governorate\": \"Sousse\",\n  \"delegation\": \"Sahloul\",\n  \"budget\": 60,\n  \"urgency\": \"urgent\",\n  \"description\": \"Le voyant s'allume mais l'eau reste froide.\",\n  \"accessConstraint\": \"Pièce neuve déjà achetée.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities"]
+        }
+      }
+    },
+    {
+      "name": "14. Publier - Type 2 : Offre de Prestation Pro (Provider)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"offer\",\n  \"title\": \"Artisan Menuisier : Agencement & Montage Cuisine\",\n  \"category\": \"bricolage\",\n  \"governorate\": \"Sfax\",\n  \"coverageArea\": \"Sfax et rayon de 30 km\",\n  \"priceValue\": \"30 DT / h\",\n  \"availability\": \"immediate\",\n  \"experience\": \"10 ans d'expérience\",\n  \"guarantee\": \"Travail soigné et garanti 1 an\",\n  \"description\": \"Montage dressing, pose portes et cuisines sur-mesure.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities"]
+        }
+      }
+    },
+    {
+      "name": "15. Devis - Envoyer une proposition à une demande (opp-1)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"priceQuote\": 50,\n  \"estimatedDuration\": \"45 minutes\",\n  \"availabilityDate\": \"Immédiate (en 20 min)\",\n  \"message\": \"Bonjour, je suis disponible à Sahloul pour réparer le chauffe-eau.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities/opp-1/proposals",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities", "opp-1", "proposals"]
+        }
+      }
+    },
+    {
+      "name": "16. Devis - Voir les propositions d'une demande (opp-1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities/opp-1/proposals",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "opportunities", "opp-1", "proposals"]
+        }
+      }
+    },
+    {
+      "name": "17. Annuaire - Liste des Artisans Vérifiés",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/providers?governorate=Sousse",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "providers"],
+          "query": [{ "key": "governorate", "value": "Sousse" }]
+        }
+      }
+    },
+    {
+      "name": "18. Admin - Liste des Utilisateurs & Packs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "users"]
+        }
+      }
+    },
+    {
+      "name": "19. Admin - Valider / Révoquer le badge CIN",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/users/usr-2/cin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "users", "usr-2", "cin"]
+        }
+      }
+    },
+    {
+      "name": "20. Admin - Statistiques de la plateforme",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/stats",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "stats"]
+        }
+      }
+    }
+  ]
+}
